@@ -7,7 +7,7 @@ import { Job } from './job';
   providedIn: 'root'
 })
 export class JobService {
-  private apiServerUrl = '';
+  private apiServerUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 

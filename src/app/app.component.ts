@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Job } from './job';
 import { JobService } from './job.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,17 +18,19 @@ export class AppComponent implements OnInit {
 
   constructor(private jobService: JobService) {}
 
+  ngOnInit(): void {
+    this.getJobs();
+  }
+
   public getJobs(): void {
-    this.jobService.getJobs().subscribe(
-      (response: Job[]) => {
+    this.jobService.getJobs().subscribe({
+      next: (response: Job[]) => {
         this.jobs = response;
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         console.error(error);
         alert(error.message);
       }
-    )
+    });
   }
-  
-
 }
