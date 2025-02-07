@@ -3,5 +3,5 @@ export interface Job {
     jobName: string;
     jobRole: string;
     screenshot: string;
-    date: boolean;
+    date: string;
     }
