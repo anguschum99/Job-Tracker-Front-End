@@ -2,6 +2,9 @@
 
 Web app using angular to post and track jobs applied to. [Use this as the back end](https://github.com/anguschum99/JobTracker-Backend)
 
+### Made With
+Bootstrap 5.3, Angular
+
 ### Getting Started
 [Use this as the back end](https://github.com/anguschum99/JobTracker-Backend) - Clone this and run it
 ![image](https://github.com/user-attachments/assets/4b5998ba-0857-4fc7-a75f-084c08f2f5eb)
