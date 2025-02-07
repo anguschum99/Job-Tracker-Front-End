@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   public title = 'job-portal';
   public jobs: Job[] = [];
   public editJob: Job | null = null;
+  public deleteJob: Job | null = null;
+
 
   constructor(private jobService: JobService) {}
 
@@ -33,6 +35,8 @@ export class AppComponent implements OnInit {
     
     if (mode === 'edit' && job) {
       this.editJob = { ...job };
+    } else if (mode === 'delete' && job) {
+      this.deleteJob = job;
     } else if (mode === 'add') {
       this.editJob = {
         id: 0,
@@ -42,7 +46,7 @@ export class AppComponent implements OnInit {
         date: ''
       };
     }
-  
+
     const modalElement = document.getElementById(modalId);
     if (modalElement) {
       const modal = new bootstrap.Modal(modalElement);
@@ -89,6 +93,28 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  public onDeleteJob(): void {
+    if (this.deleteJob) {
+      this.jobService.deleteJob(this.deleteJob.id).subscribe({
+        next: (response: void) => {
+          console.log('Job deleted successfully');
+          this.getJobs();
+          // Close the modal
+          const modalElement = document.getElementById('deleteJobModal');
+          if (modalElement) {
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            modal?.hide();
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error(error);
+          alert(error.message);
+        }
+      });
+    }
+  }
+
 
   public getJobs(): void {
     this.jobService.getJobs().subscribe({

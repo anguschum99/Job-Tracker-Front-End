@@ -27,5 +27,7 @@ export class JobService {
     return this.http.delete<void>(`${this.apiServerUrl}/job/delete/${jobId}`);
   }
 
+  
+
 
 }
