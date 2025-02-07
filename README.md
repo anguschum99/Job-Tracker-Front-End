@@ -6,7 +6,7 @@ Web app using angular to post and track jobs applied to. [Use this as the back e
 [Use this as the back end](https://github.com/anguschum99/JobTracker-Backend) - Clone this and run it
 ![image](https://github.com/user-attachments/assets/4b5998ba-0857-4fc7-a75f-084c08f2f5eb)
 **Adding a job**: Press the Add Job button at the top, and fill info accordingly
-**Editng a job**: Press the Pencil icon on the card
+**Editing a job**: Press the Pencil icon on the card
 **Deleting a job**: Press the X button on the card
 
 ### Todo
